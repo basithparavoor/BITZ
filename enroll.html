@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll at Bitz — Start Your Skill Journey</title>
+    <meta name="description" content="Simple 3-step admission at Bitz: choose program, register, and begin. Online and offline options with placement assistance.">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Re-using form styles from contact.html */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; 
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* Form status messages */
+        #enroll-form-status {
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        .status-success {
+            color: green;
+        }
+        .status-error {
+            color: red;
+        }
+
+        /* Layout for multi-column fields */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-consent {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .form-consent input {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <div class="logo">Bitz</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="success-stories.html">Success Stories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="enroll.html" class="cta-button">Enroll Now</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header container">
+            <h1>Ready to start?</h1>
+            <p>Enroll in 3 simple steps.</p>
+        </section>
+
+        <section class="container" style="padding-bottom: 30px;">
+            <div class="card-grid">
+                <div class="card">
+                    <h3>1. Choose Program</h3>
+                    <p>Explore our courses and find the perfect fit for your career goals.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Complete Application</h3>
+                    <p>Fill out the form below with your details and preferences.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Join Class & Get Certified</h3>
+                    <p>Our team will contact you to confirm your seat and start date.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container content-section">
+            <div class="card" style="max-width: 800px; margin: 0 auto;">
+                <h2 style="text-align: left; margin-top: 0;">Enrollment Application</h2>
+                
+                <form id="enrollment-form" novalidate>
+                    
+                    <fieldset>
+                        <legend><h3>Personal Information</h3></legend>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" id="dob" name="dob">
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend><h3>Course Selection</h3></legend>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="courseSlug">Course of Interest</label>
+                                <select id="courseSlug" name="courseSlug" required>
+                                    <option value="" disabled selected>Select a course...</option>
+                                    <option value="personality-development">Personality Development</option>
+                                    <option value="eps">EPS (Employability Skills)</option>
+                                    <option value="digital-branding">Personal Digital Branding</option>
+                                    <option value="financial-management">Financial Management</option>
+                                    <option value="nlp">NLP</option>
+                                    <option value="crm">Customer Relationship Management</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mode">Preferred Mode</label>
+                                <select id="mode" name="mode" required>
+                                    <option value="Online">Online</option>
+                                    <option value="Offline">Offline</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="highestQualification">Highest Qualification</label>
+                                <input type="text" id="highestQualification" name="highestQualification" placeholder="e.g., BCom, +2">
+                            </div>
+                            <div class="form-group">
+                                <label for="paymentOption">Payment Option</label>
+                                <select id="paymentOption" name="paymentOption" required>
+                                    <option value="Full">Full Payment</option>
+                                    <option value="EMI">EMI / Installments</option>
+                                    <option value="Scholarship">Request Scholarship Info</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend><h3>Additional Information</h3></legend>
+                        <div class="form-group">
+                            <label for="additionalInfo">Anything else we should know? (Optional)</label>
+                            <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
+                        </div>
+                    </fieldset>
+                    
+                    <input type="hidden" name="recaptchaToken" value="temp_token">
+                    
+                    <div class="form-group form-consent">
+                        <input type="checkbox" id="consent" name="consent" value="true" required>
+                        <label for="consent">By submitting, you agree to our Terms & Privacy Policy.</label>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">Submit Application</button>
+                    
+                    <p id="enroll-form-status"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-blurb">
+                <h4>Bitz — Enhancing Your Skill</h4>
+                <p>Industry-ready training that prepares youth and professionals for the job market with hands-on, certified programs.</p>
+            </div>
+            </div>
+        <div class="container copyright">
+            <p>© 2025 Bitz. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="main.js" defer></script>
+</body>
+</html>

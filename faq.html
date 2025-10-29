@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — Frequently Asked Questions | Bitz</title>
+    <meta name="description" content="Common questions about courses, schedules, fees, certifications and placements answered.">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        details {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden; /* Ensures clean border-radius */
+        }
+        
+        summary {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            padding: 20px;
+            cursor: pointer;
+            list-style: none; /* Removes default triangle */
+            position: relative;
+        }
+        
+        summary::-webkit-details-marker {
+            display: none; /* Removes default triangle in Chrome/Safari */
+        }
+        
+        /* Custom arrow */
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease;
+        }
+        
+        details[open] summary {
+            background: var(--light-blue);
+        }
+        
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <div class="logo">Bitz</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="enroll.html" class="cta-button">Enroll Now</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find quick answers to common questions about our programs.</p>
+        </section>
+
+        <section class="container content-section">
+            <div class="faq-container">
+                
+                <details>
+                    <summary>How long are your courses?</summary>
+                    <div class="faq-answer">
+                        <p>Most of our short-term skill courses range between 2 weeks and 12 weeks. The exact duration for each program is listed on its dedicated course detail page.</p>
+                    </div>
+                </details>
+                
+                <details>
+                    <summary>Do you provide certification?</summary>
+                    <div class="faq-answer">
+                        <p>Yes, all our major programs conclude with a final assessment. Upon successful completion, you will receive a recognized certification from Bitz. Some courses may also offer industry-partnered or national-level certifications. Please check the individual course page for details.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Are classes online or offline?</summary>
+                    <div class="faq-answer">
+                        <p>We offer Online, Offline (at our campus), and Hybrid (a mix of both) modes. The available modes depend on the specific course and batch. You can filter courses by mode on our Courses page.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Do you help with placements?</summary>
+                    <div class="faq-answer">
+                        <p>Yes. We provide comprehensive placement assistance, which includes internship support, resume building workshops, mock interviews, and connecting you with our network of industry partners. Our goal is to make you 100% job-ready.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What are the payment options?</summary>
+                    <div class="faq-answer">
+                        <p>We accept all major payment methods, including UPI, Credit/Debit Cards, and Netbanking. We also offer flexible EMI (Equated Monthly Installment) plans for eligible courses to make learning more affordable.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Can I get a demo class?</summary>
+                    <div class="faq-answer">
+                        <p>We regularly host free workshops and webinars that act as demo classes. Please check our <a href="events.html">Events page</a> for the upcoming schedule, or contact our admissions team to book a counselling call.</p>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container copyright">
+            <p>© 2025 Bitz. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

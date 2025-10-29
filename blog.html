@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Career Tips & Skill Guides | Bitz</title>
+    <meta name="description" content="Career advice, skill guides, industry trends, and practical tips for learners and professionals.">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr; /* Main content 3 parts, sidebar 1 part */
+            gap: 40px;
+        }
+
+        /* Post Card Styles */
+        .post-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            overflow: hidden; /* To contain the image */
+        }
+        .post-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .post-card-content {
+            padding: 25px;
+        }
+        .post-category {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .post-card-content h3 {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .post-card-content h3 a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        .post-card-content h3 a:hover {
+            text-decoration: underline;
+        }
+        .post-card-content .read-more {
+            font-weight: 600;
+            color: var(--primary-blue);
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        /* Sidebar Styles */
+        .blog-sidebar .sidebar-widget {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .sidebar-widget h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 10px;
+        }
+        .sidebar-widget .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .sidebar-widget .tag-list a {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .sidebar-widget input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <div class="logo">Bitz</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="success-stories.html">Success Stories</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="enroll.html" class="cta-button">Enroll Now</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header container">
+            <h1>Blog & Resources</h1>
+            <p>Career advice, skill guides, and industry trends for learners.</p>
+        </section>
+
+        <section class="container content-section">
+            <div class="blog-layout">
+                
+                <div class="post-list">
+
+                    <article class="post-card">
+                        
+                        <div class="post-card-content">
+                            <span class="post-category">Career</span>
+                            <h3><a href="top-10-soft-skills.html">Top 10 Soft Skills Employers Want in 2025</a></h3>
+                            <p>Discover the critical soft skills like communication, adaptability, and problem-solving that employers are actively seeking...</p>
+                            <a href="top-10-soft-skills.html" class="read-more">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        
+                        <div class="post-card-content">
+                            <span class="post-category">Finance</span>
+                            <h3><a href="budgeting-101.html">Budgeting 101: Financial Management for Young Professionals</a></h3>
+                            <p>Take control of your finances. This guide breaks down the basics of budgeting, saving, and investing for your future...</p>
+                            <a href="budgeting-101.html" class="read-more">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        
+                        <div class="post-card-content">
+                            <span class="post-category">Digital</span>
+                            <h3><a href="personal-branding.html">Personal Branding for Beginners: 7 Practical Steps</a></h3>
+                            <p>Your online brand is your new resume. Learn 7 actionable steps to build a personal brand that attracts opportunities...</p>
+                            <a href="personal-branding.html" class="read-more">Read More &rarr;</a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <aside class="blog-sidebar">
+                    
+                    <div class="sidebar-widget">
+                        <h4>Subscribe for Tips</h4>
+                        <p>Get tips, free guides, and batch updates directly to your inbox.</p>
+                        <form id="newsletter-form">
+                            <input type="email" name="email" placeholder="your.email@example.com" required>
+                            <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">Subscribe</button>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h4>Categories</h4>
+                        <div class="tag-list">
+                            <a href="#">Career</a>
+                            <a href="#">Skills</a>
+                            <a href="#">Digital</a>
+                            <a href="#">Finance</a>
+                            <a href="#">Productivity</a>
+                            <a href="#">Interviews</a>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h4>Featured Courses</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 10px;"><a href="eps.html">Employability Skills (EPS)</a></li>
+                            <li style="margin-bottom: 10px;"><a href="digital-branding.html">Personal Digital Branding</a></li>
+                            <li><a href="financial-management.html">Financial Management</a></li>
+                        </ul>
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-blurb">
+                <h4>Bitz — Enhancing Your Skill</h4>
+                <p>Industry-ready training that prepares youth and professionals for the job market with hands-on, certified programs.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>123 Skill Street, City, State</p>
+                <p>+91 98765 43210</p>
+                <p>admissions@bits.example</p>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>© 2025 Bitz. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="main.js" defer></script>
+</body>
+</html>

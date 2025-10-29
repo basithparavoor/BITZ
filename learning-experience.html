@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Experience — How Bitz Teaches</title>
+    <meta name="description" content="Discover Bitz’ learning model: practical labs, industry projects, mentorship, assessments, and placement support.">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .experience-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        .experience-layout img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        /* Reverse layout for every even child */
+        .experience-section:nth-child(even) .experience-layout {
+            grid-template-columns: 1fr 1fr;
+        }
+        .experience-section:nth-child(even) .experience-layout .text {
+            order: 2; /* Flips text to the right */
+        }
+        .experience-section:nth-child(even) .experience-layout .image {
+            order: 1; /* Flips image to the left */
+        }
+        
+        .experience-layout h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            color: var(--primary-blue);
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: var(--primary-blue);
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 60px;
+            color: var(--white);
+        }
+        .final-cta h2 {
+            color: var(--white);
+            margin-top: 0;
+        }
+        .final-cta .cta-button {
+             background: var(--white);
+             color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <div class="logo">Bitz</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="learning-experience.html" class="active">Learning</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="enroll.html" class="cta-button">Enroll Now</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header container">
+            <h1>Where knowledge meets application.</h1>
+            <p>Our learning model is built on one principle: you learn by doing.</p>
+        </section>
+
+        <section class="container content-section">
+            
+            <div class="experience-section">
+                <div class="experience-layout">
+                    <div class="text">
+                        <h3>Hands-On Labs & Practicals</h3>
+                        <p>We believe in a 90% practical approach. Instead of just listening to lectures, you'll spend most of your time in labs, workshops, and real-world scenarios. Whether it's a mock interview, a group discussion, or building a personal brand website, you'll be actively applying every concept you learn.</p>
+                    </div>
+                    <div class="image">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <div class="experience-layout">
+                    <div class="text">
+                        <h3>Mentor-Led Sessions</h3>
+                        <p>Our trainers aren't just teachers; they are industry mentors with years of experience. They provide personalized feedback, share insights from their own careers, and guide you through challenges. This mentorship continues even after you graduate.</p>
+                    </div>
+                    <div class="image">
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="experience-section">
+                <div class="experience-layout">
+                    <div class="text">
+                        <h3>Project-Based Learning</h3>
+                        <p>Every major course ends with a capstone project. This is your chance to build a complete, professional-grade piece of work for your portfolio. You might develop a full financial plan, create a digital marketing campaign, or present a formal business proposal.</p>
+                    </div>
+                    <div class="image">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <div class="experience-layout">
+                    <div class="text">
+                        <h3>Internships & Placement Support</h3>
+                        <p>Our commitment doesn't end with certification. Our dedicated placement cell works with 50+ industry partners to find relevant internship and job opportunities. We provide end-to-end support, from resume building to salary negotiation, to ensure you land the role you deserve.</p>
+                    </div>
+                    <div class="image">
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        
+        <section class="final-cta">
+            <div class="container">
+                <h2>Experience the Bitz Difference.</h2>
+                <p>Ready to learn by doing? Attend a free workshop or book a campus visit.</p>
+                <a href="events.html" class="cta-button" style="margin-top: 15px;">See Upcoming Events</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container copyright">
+            <p>© 2025 Bitz. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

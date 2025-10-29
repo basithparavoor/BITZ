@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Customer Relationship Management (CRM) Course | Bitz</title>
+    <meta name="description" content="Learn the strategies and tools for excellent customer service and client retention. Duration: 4 Weeks. Mode: Hybrid.">
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../assets/css/course-detail.css"> <style>
+        .course-detail-layout { display: grid; grid-template-columns: 2.5fr 1.5fr; gap: 40px; margin-top: 30px; }
+        .course-sidebar { position: sticky; top: 20px; }
+        .course-sidebar .card { box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .course-hero-block { border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 30px; }
+        .course-hero-block h1 { font-size: 2.8rem; margin-bottom: 5px; }
+        .course-hero-block .tagline { font-size: 1.3rem; color: #555; margin-bottom: 20px; }
+        .course-meta { display: flex; gap: 20px; font-weight: 600; color: var(--primary-blue); }
+        .course-content-section { margin-bottom: 35px; }
+        .course-content-section h2 { text-align: left; font-size: 1.8rem; border-bottom: 2px solid var(--light-blue); padding-bottom: 5px; }
+        .course-content-section ul { padding-left: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input { width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .form-consent { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; }
+        .form-consent input { width: auto; }
+        #enroll-form-status { margin-top: 15px; font-weight: 600; }
+        .status-success { color: green; } .status-error { color: red; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <div class="logo">Bitz</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../courses.html" class="active">Courses</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <a href="../enroll.html" class="cta-button">Enroll Now</a>
+        </nav>
+    </header>
+
+    <main class="container content-section">
+        <div class="course-detail-layout">
+            
+            <div class="course-content">
+                
+                <div class="course-hero-block">
+                    <h1>Customer Relationship Management (CRM)</h1>
+                    <p class="tagline">Master the art of customer service and retention.</p>
+                    <div class="course-meta">
+                        <span><strong>Duration:</strong> 4 Weeks</span>
+                        <span><strong>Mode:</strong> Hybrid</span>
+                        <span><strong>Next Batch:</strong> Starts Nov 25th</span>
+                    </div>
+                </div>
+
+                <section class="course-content-section">
+                    <h2>Course Overview</h2>
+                    <p>In a competitive market, the most successful businesses are those that build strong customer relationships. This course teaches you the strategies and tools to manage the entire customer lifecycle, from lead to loyal advocate. You will learn practical customer service skills, client retention strategies, and the fundamentals of using CRM software.</p>
+                </section>
+                
+                <section class="course-content-section">
+                    <h2>What You Will Learn</h2>
+                    <ul>
+                        <li>The principles of modern Customer Relationship Management.</li>
+                        <li>Advanced communication skills for handling difficult customers.</li>
+                        <li>Strategies for customer onboarding, support, and retention.</li>
+                        <li>How to use CRM software (e.g., HubSpot/Salesforce basics) to track interactions.</li>
+                        <li>Measuring customer satisfaction (NPS, CSAT) and gathering feedback.</li>
+                        <li>Techniques for upselling and cross-selling to existing clients.</li>
+                    </ul>
+                </section>
+
+                <section class="course-content-section">
+                    <h2>Course Structure</h2>
+                    <p><strong>Week 1:</strong> CRM Fundamentals (The Customer Lifecycle, Service Principles)</p>
+                    <p><strong>Week 2:</strong> Communication & Service (Handling Complaints, Active Listening)</p>
+                    <p><strong>Week 3:</strong> Tools & Technology (Intro to CRM Platforms, Managing Databases)</p>
+                    <p><strong>Week 4:</strong> Retention & Growth (Client Retention, Feedback & Metrics, Final Project)</p>
+                </section>
+                
+                <section class="course-content-section">
+                    <h2>Who Should Join</h2>
+                    <ul>
+                        <li>Aspiring customer service representatives or client success managers.</li>
+                        <li>Sales and marketing professionals.</li>
+                        <li>Small business owners and freelancers.</li>
+                    </ul>
+                </section>
+            </div>
+
+            <aside class="course-sidebar">
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <h2 style="margin:0; text-align: center; font-size: 2.5rem;">₹4,999</h2>
+                    </div>
+                    <form id="enrollment-form" novalidate>
+                        <h3 style="text-align: center; margin-top: 0;">Confirm Your Seat</h3>
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <input type="hidden" name="courseSlug" value="customer-relationship-management">
+                        <input type="hidden" name="recaptchaToken" value="temp_token">
+                        <div class="form-group form-consent">
+                            <input type="checkbox" id="consent" name="consent" value="true" required>
+                            <label for="consent">I agree to the Terms & Privacy Policy.</label>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Confirm My Seat</button>
+                        <p id="enroll-form-status"></p>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container copyright">
+            <p>© 2025 Bitz. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../main.js" defer></script>
+</body>
+</html>

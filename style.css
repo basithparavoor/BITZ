@@ -1,0 +1,347 @@
+/* ---
+Professional / University Stylesheet for Bitz
+--- */
+
+/* 1. FONT IMPORT (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&display=swap');
+
+/* 2. ACADEMIC ROOT VARIABLES (New Color Palette) */
+:root {
+    --brand-dark: #003366;       /* Deep, classic navy blue (headings, footer) */
+    --brand-primary: #004a99;   /* A more traditional, academic blue for CTAs */
+    --brand-light-bg: #fdfdfa;   /* A very light cream/parchment for backgrounds */
+    
+    --text-body: #333333;        /* Dark grey for body text */
+    --text-lead: #555555;        /* Lighter grey for subheadings */
+    --text-muted: #6c757d;       /* Muted text for helper copy */
+    --text-on-dark: #f1f5f9;     /* Light text for footer */
+    
+    --border-color: #dce1e7;     /* A clean, light grey for borders */
+    --white: #ffffff;
+    
+    /* Academic Typography */
+    --font-heading: 'poppins', 'Inter', -apple-system, sans-serif;
+    --font-body: 'raleway', 'Merriweather', serif;
+    
+    /* Subtle Effects */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* 3. GLOBAL & TYPOGRAPHY RESET */
+body {
+    font-family: var(--font-body); /* Serif font for body */
+    margin: 0;
+    color: var(--text-body);
+    line-height: 1.8;
+    font-size: 17px; 
+    background-color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--brand-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading); /* Sans-serif for headings */
+    font-weight: 700;
+    color: var(--brand-dark);
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+h1 { font-size: 3.0rem; font-weight: 900; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* 4. HEADER & NAVIGATION */
+.site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03); /* Subtle shadow for elevation */
+}
+.site-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: var(--font-heading);
+    color: var(--brand-dark);
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.nav-links li {
+    margin-left: 25px;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--text-lead);
+    padding: 8px 0;
+    text-decoration: none;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+.nav-links a:hover {
+    color: var(--brand-primary);
+    text-decoration: none;
+}
+.nav-links a.active {
+    color: var(--brand-primary);
+    border-bottom: 2px solid var(--brand-primary);
+}
+
+/* 5. PROFESSIONAL BUTTONS */
+.cta-button {
+    background: var(--brand-primary);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 4px; /* Sharper radius */
+    font-weight: 700;
+    font-family: var(--font-heading);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--brand-primary);
+    display: inline-block;
+}
+.cta-button:hover {
+    background: var(--brand-dark);
+    border-color: var(--brand-dark);
+    text-decoration: none;
+}
+.cta-button-secondary {
+    background: var(--white);
+    color: var(--brand-primary);
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+.cta-button-secondary:hover {
+    background: var(--brand-light-bg);
+    border-color: var(--brand-primary);
+    text-decoration: none;
+}
+
+/* 6. HERO SECTION */
+.hero {
+    background: var(--brand-light-bg); /* Parchment background */
+    padding: 80px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.hero-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+.hero h1 {
+    margin-bottom: 20px;
+}
+.hero p {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    color: var(--text-lead);
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+.hero-buttons a {
+    margin: 0 10px;
+}
+
+/* 7. SHARED SECTIONS & CARDS */
+.why-bitz, .featured-programs, .content-section, .page-header {
+    padding: 80px 0;
+}
+.featured-programs {
+    background: var(--brand-light-bg);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.card-grid, .mission-vision, .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.card {
+    background: var(--white);
+    border: 1px solid var(--border-color); /* More defined border */
+    border-radius: 6px;
+    padding: 30px;
+    box-shadow: var(--shadow-sm); /* Very subtle shadow */
+    transition: all 0.3s ease;
+}
+.card:hover {
+    border-color: var(--brand-primary); /* Border color change on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.card h3 {
+    margin-top: 0;
+}
+.course-card a.read-more {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--brand-primary);
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+}
+.course-card a.read-more:hover {
+    text-decoration: underline;
+}
+
+
+/* 8. ABOUT/PAGE HEADER SPECIFIC */
+.page-header {
+    text-align: center;
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--brand-dark);
+    color: var(--white);
+}
+.page-header h1 {
+    color: var(--white);
+    margin-bottom: 10px;
+}
+.page-header p {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    color: var(--text-on-dark);
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.stat strong {
+    font-family: var(--font-heading);
+    color: var(--brand-primary);
+}
+.stat span {
+    font-family: var(--font-body);
+    color: var(--text-muted);
+}
+
+/* 9. FOOTER */
+.site-footer {
+    background: var(--brand-dark);
+    color: var(--text-on-dark);
+    padding-top: 60px;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+}
+.site-footer a {
+    color: var(--white);
+    text-decoration: none;
+}
+.site-footer a:hover {
+    text-decoration: underline;
+}
+.site-footer h4 {
+    color: var(--white);
+    border-bottom: 1px solid #4a759c;
+    padding-bottom: 10px;
+    font-size: 1.1rem;
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 50px;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-links li {
+    margin-bottom: 12px;
+}
+.footer-contact p {
+    margin: 0 0 10px 0;
+}
+.copyright {
+    text-align: center;
+    border-top: 1px solid #4a759c;
+    margin-top: 40px;
+    padding: 25px 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.copyright a {
+    color: var(--text-on-dark);
+}
+
+/* 10. FORM STYLES */
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--text-body);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    border: 1px solid var(--border-color);
+    border-radius: 4px; /* Sharper */
+    box-sizing: border-box; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(0, 74, 153, 0.2);
+}
+.form-consent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+.form-consent label {
+    margin-bottom: 0;
+    font-family: var(--font-body);
+    font-weight: 400;
+}
+#form-status, #enroll-form-status, #corporate-form-status {
+    font-weight: 700;
+    font-family: var(--font-heading);
+    margin-top: 15px;
+}
+.status-success { color: #155724; }
+.status-error { color: #721c24; }
