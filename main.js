@@ -1,51 +1,115 @@
 /**
- * Frontend Form Handler
- * Captures form submissions and sends them to the Vercel API endpoint.
+ * Frontend Form Handlers
+ * Captures submissions for Contact, Enrollment, and Corporate forms.
  */
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Find a contact form on the page (e.g., on contact.html)
+    // --- Handler 1: Contact Form ---
     const contactForm = document.getElementById('contact-form');
-    
     if (contactForm) {
         contactForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Stop the browser from submitting the form
-            
+            event.preventDefault();
             const statusMessage = document.getElementById('form-status');
             statusMessage.textContent = 'Sending...';
+            statusMessage.className = '';
 
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
 
             try {
-                const response = await fetch('/contact', {
+                const response = await fetch('/api/forms/contact', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
                 });
-
                 const result = await response.json();
 
                 if (response.ok) {
-                    // Success!
-                    statusMessage.textContent = 'Message sent! We will contact you soon.';
+                    statusMessage.textContent = result.message;
                     statusMessage.className = 'status-success';
                     contactForm.reset();
                 } else {
-                    // Handle server errors
                     statusMessage.textContent = `Error: ${result.message || 'Submission failed.'}`;
                     statusMessage.className = 'status-error';
                 }
             } catch (error) {
-                // Handle network errors
-                console.error('Fetch error:', error);
+                console.error('Contact form error:', error);
                 statusMessage.textContent = 'Network error. Please try again.';
                 statusMessage.className = 'status-error';
             }
         });
     }
 
-    // You can add a similar handler for #enrollment-form here
+    // --- Handler 2: Enrollment Form ---
+    const enrollmentForm = document.getElementById('enrollment-form');
+    if (enrollmentForm) {
+        enrollmentForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const statusMessage = document.getElementById('enroll-form-status');
+            statusMessage.textContent = 'Submitting application...';
+            statusMessage.className = '';
+            
+            const formData = new FormData(enrollmentForm);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/api/forms/enroll', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+                const result = await response.json();
+
+                if (response.ok) {
+                    statusMessage.textContent = result.message;
+                    statusMessage.className = 'status-success';
+                    enrollmentForm.reset();
+                } else {
+                    statusMessage.textContent = `Error: ${result.message || 'Submission failed.'}`;
+                    statusMessage.className = 'status-error';
+                }
+            } catch (error) {
+                console.error('Enrollment form error:', error);
+                statusMessage.textContent = 'Network error. Please try again.';
+                statusMessage.className = 'status-error';
+            }
+        });
+    }
+    
+    // --- Handler 3: Corporate Form ---
+    const corporateForm = document.getElementById('corporate-form');
+    if (corporateForm) {
+        corporateForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const statusMessage = document.getElementById('corporate-form-status');
+            statusMessage.textContent = 'Submitting request...';
+            statusMessage.className = '';
+            
+            const formData = new FormData(corporateForm);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/api/forms/corporate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+                const result = await response.json();
+
+                if (response.ok) {
+                    statusMessage.textContent = result.message;
+                    statusMessage.className = 'status-success';
+                    corporateForm.reset();
+                } else {
+                    statusMessage.textContent = `Error: ${result.message || 'Submission failed.'}`;
+                    statusMessage.className = 'status-error';
+                }
+            } catch (error) {
+                console.error('Corporate form error:', error);
+                statusMessage.textContent = 'Network error. Please try again.';
+                statusMessage.className = 'status-error';
+            }
+        });
+    }
+
 });
