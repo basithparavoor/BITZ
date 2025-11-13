@@ -9,55 +9,18 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Re-using form styles from contact.html */
-        .form-group {
-            margin-bottom: 20px;
+        /* Optional: Styling to make the Google Form look better */
+        .google-form-wrapper {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
         }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        iframe {
             width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box; 
-        }
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        
-        /* Form status messages */
-        #enroll-form-status {
-            font-weight: 600;
-            margin-top: 15px;
-        }
-        .status-success {
-            color: green;
-        }
-        .status-error {
-            color: red;
-        }
-
-        /* Layout for multi-column fields */
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .form-consent {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .form-consent input {
-            width: auto;
+            border: none;
+            margin: 0;
         }
     </style>
 </head>
@@ -103,92 +66,10 @@
         </section>
 
         <section class="container content-section">
-            <div class="card" style="max-width: 800px; margin: 0 auto;">
-                <h2 style="text-align: left; margin-top: 0;">Enrollment Application</h2>
+            <div class="google-form-wrapper" style="max-width: 800px; margin: 0 auto;">
                 
-                <form id="enrollment-form" novalidate>
-                    
-                    <fieldset>
-                        <legend><h3>Personal Information</h3></legend>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="fullName">Full Name</label>
-                                <input type="text" id="fullName" name="fullName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="dob">Date of Birth</label>
-                                <input type="date" id="dob" name="dob">
-                            </div>
-                        </div>
-                    </fieldset>
-                    
-                    <fieldset>
-                        <legend><h3>Course Selection</h3></legend>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="courseSlug">Course of Interest</label>
-                                <select id="courseSlug" name="courseSlug" required>
-                                    <option value="" disabled selected>Select a course...</option>
-                                    <option value="personality-development">Personality Development</option>
-                                    <option value="eps">EPS (Employability Skills)</option>
-                                    <option value="digital-branding">Personal Digital Branding</option>
-                                    <option value="financial-management">Financial Management</option>
-                                    <option value="nlp">NLP</option>
-                                    <option value="crm">Customer Relationship Management</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="mode">Preferred Mode</label>
-                                <select id="mode" name="mode" required>
-                                    <option value="Online">Online</option>
-                                    <option value="Offline">Offline</option>
-                                    <option value="Hybrid">Hybrid</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="highestQualification">Highest Qualification</label>
-                                <input type="text" id="highestQualification" name="highestQualification" placeholder="e.g., BCom, +2">
-                            </div>
-                            <div class="form-group">
-                                <label for="paymentOption">Payment Option</label>
-                                <select id="paymentOption" name="paymentOption" required>
-                                    <option value="Full">Full Payment</option>
-                                    <option value="EMI">EMI / Installments</option>
-                                    <option value="Scholarship">Request Scholarship Info</option>
-                                </select>
-                            </div>
-                        </div>
-                    </fieldset>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfLUg-eUn8yC5FZ_BUkNdTXJaD3yFNHEHsNWaVbSv9d1GUqDQ/viewform?embedded=true" width="800" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-                    <fieldset>
-                        <legend><h3>Additional Information</h3></legend>
-                        <div class="form-group">
-                            <label for="additionalInfo">Anything else we should know? (Optional)</label>
-                            <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
-                        </div>
-                    </fieldset>
-                    
-                    <input type="hidden" name="recaptchaToken" value="temp_token">
-                    
-                    <div class="form-group form-consent">
-                        <input type="checkbox" id="consent" name="consent" value="true" required>
-                        <label for="consent">By submitting, you agree to our Terms & Privacy Policy.</label>
-                    </div>
-                    
-                    <button type="submit" class="cta-button">Submit Application</button>
-                    
-                    <p id="enroll-form-status"></p>
-                </form>
             </div>
         </section>
     </main>
@@ -199,12 +80,26 @@
                 <h4>Bitz — Enhancing Your Skill</h4>
                 <p>Industry-ready training that prepares youth and professionals for the job market with hands-on, certified programs.</p>
             </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>123 Skill Street, City, State</p>
+                <p>+91 98765 43210</p>
+                <p>admissions@bits.example</p>
+            </div>
+        </div>
         <div class="container copyright">
             <p>© 2025 Bitz. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
         </div>
     </footer>
 
-    <script src="main.js" defer></script>
 </body>
 </html>
