@@ -1,19 +1,5 @@
-/**
- * Vercel Serverless Function
- * Endpoint: POST /api/forms/contact
- * Receives data and SAVES it to Google Sheets.
- */
 import { GoogleSpreadsheet } from 'google-spreadsheet';
-
-// Helper function to initialize the Google Sheet
-async function getDoc() {
-    // Authenticate with Google
-    const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS);
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
-    await doc.useServiceAccountAuth(creds);
-    await doc.loadInfo(); // loads document properties and worksheets
-    return doc;
-}
+import { JWT } from 'google-auth-library';
 
 export default async function handler(request, response) {
     if (request.method !== 'POST') {
@@ -23,21 +9,27 @@ export default async function handler(request, response) {
     try {
         const data = request.body;
 
-        // --- 1. Validation ---
+        // Validation
         if (!data.fullName || !data.email || !data.subject || !data.message) {
-            return response.status(400).json({
-                status: 'error',
-                message: 'Validation failed: Missing required fields.'
-            });
+            return response.status(400).json({ status: 'error', message: 'Missing fields.' });
         }
 
-        // --- 2. Save data to Google Sheets ---
-        const doc = await getDoc();
-        const sheet = doc.sheetsByTitle['contact']; // Get the 'contact' tab
+        // Auth (V5)
+        const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+        const serviceAccountAuth = new JWT({
+            email: creds.client_email,
+            key: creds.private_key,
+            scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        });
+
+        const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
+        await doc.loadInfo();
         
-        // Append a new row
+        const sheet = doc.sheetsByTitle['contact'];
+        if (!sheet) throw new Error("Sheet 'contact' not found");
+
         await sheet.addRow({
-            id: `contact_${new Date().getTime()}`, // Simple unique ID
+            id: `contact_${new Date().getTime()}`,
             full_name: data.fullName,
             email: data.email,
             phone: data.phone,
@@ -47,14 +39,10 @@ export default async function handler(request, response) {
             submitted_at: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
         });
 
-        // --- 3. Send Success Response ---
-        return response.status(201).json({
-            status: 'success',
-            message: 'Submission received'
-        });
+        return response.status(201).json({ status: 'success', message: 'Message sent.' });
 
     } catch (error) {
-        console.error('Google Sheets error:', error);
-        return response.status(500).json({ status: 'error', message: 'Internal Server Error' });
+        console.error('API Error:', error);
+        return response.status(500).json({ status: 'error', message: error.message });
     }
 }
