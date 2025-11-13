@@ -1,19 +1,4 @@
-/**
- * Vercel Serverless Function
- * Endpoint: POST /api/forms/corporate
- * Receives corporate training requests and SAVES it to Google Sheets.
- */
 import { GoogleSpreadsheet } from 'google-spreadsheet';
-
-// Helper function to initialize the Google Sheet
-async function getDoc() {
-    // Authenticate with Google
-    const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS);
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
-    await doc.useServiceAccountAuth(creds);
-    await doc.loadInfo(); // loads document properties and worksheets
-    return doc;
-}
 
 export default async function handler(request, response) {
     if (request.method !== 'POST') {
@@ -22,22 +7,18 @@ export default async function handler(request, response) {
 
     try {
         const data = request.body;
+        
+        const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+        const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
+        
+        await doc.useServiceAccountAuth(creds);
+        await doc.loadInfo();
 
-        // --- 1. Validation ---
-        if (!data.fullName || !data.companyName || !data.email || !data.phone) {
-            return response.status(400).json({
-                status: 'error',
-                message: 'Validation failed: Missing required fields.'
-            });
-        }
-        
-        // --- 2. Save data to Google Sheets ---
-        const doc = await getDoc();
-        const sheet = doc.sheetsByTitle['corporate']; // Get the 'corporate' tab
-        
-        // Append a new row
+        const sheet = doc.sheetsByTitle['corporate'];
+        if (!sheet) throw new Error("Sheet 'corporate' not found. Check tab name.");
+
         await sheet.addRow({
-            id: `corp_${new Date().getTime()}`,
+            id: `corp_${Date.now()}`,
             full_name: data.fullName,
             company_name: data.companyName,
             email: data.email,
@@ -48,14 +29,10 @@ export default async function handler(request, response) {
             submitted_at: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
         });
 
-        // --- 3. Send Success Response ---
-        return response.status(201).json({
-            status: 'success',
-            message: 'Proposal request received. Our team will contact you within 24 hours.'
-        });
+        return response.status(201).json({ status: 'success', message: 'Proposal request received.' });
 
     } catch (error) {
-        console.error('Google Sheets error:', error);
-        return response.status(500).json({ status: 'error', message: 'Internal Server Error' });
+        console.error('Corporate API Error:', error);
+        return response.status(500).json({ status: 'error', message: error.message });
     }
 }
