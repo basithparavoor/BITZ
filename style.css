@@ -82,8 +82,8 @@ h4 { font-size: 1.25rem; }
     align-items: center;
 }
 .logo img {
-  width: 120px; /* Fixed width */
-  height: 60px; /* Fixed height */
+  width: 134.6px; /* Fixed width */
+  height: 76px; /* Fixed height */
   /* If the logo's aspect ratio isn't 120:40, it will look squished. */
 }
 
