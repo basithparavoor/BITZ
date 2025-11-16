@@ -83,7 +83,7 @@ h4 { font-size: 1.25rem; }
 }
 .logo img {
   width: 120px; /* Fixed width */
-  height: 40px; /* Fixed height */
+  height: 60px; /* Fixed height */
   /* If the logo's aspect ratio isn't 120:40, it will look squished. */
 }
 
