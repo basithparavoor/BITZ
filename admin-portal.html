@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Admin Login — Bits</title>
+<meta name="description" content="Admin login for Bits (demo). For production, use server-side auth." />
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* Page background */
+  body{background:linear-gradient(180deg,#eef6ff 0%,#ffffff 60%);min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:#0f172a;margin:0}
+  .wrap{max-width:960px;width:100%;padding:2rem}
+  .grid{display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:center}
+  .brand{padding:1rem 1.5rem}
+  .brand img{height:64px}
+  .lead{color:#475569;margin-top:.5rem}
+  .login-card{background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.08);padding:1.6rem}
+  .login-card h2{margin:0 0 .4rem 0}
+  .form-row{margin-top:.6rem;display:flex;gap:.6rem}
+  .input{width:100%;padding:.7rem 0.85rem;border-radius:8px;border:1px solid #e6eef7;background:#fbfdff;font-size:15px}
+  .input:focus{outline:none;border-color:#7aa7ff;box-shadow:0 0 0 4px rgba(46,134,246,0.08)}
+  .btn{display:inline-block;padding:.7rem 1rem;border-radius:8px;background:#0a4db8;color:#fff;border:0;cursor:pointer;font-weight:600}
+  .btn.ghost{background:transparent;color:#0a4db8;border:1px solid #dbeafe}
+  .muted{color:#64748b;font-size:.95rem}
+  .note{font-size:.9rem;color:#94a3b8;margin-top:.6rem}
+  .cards-list{display:flex;flex-direction:column;gap:.75rem}
+  .card-sample{background:#f8fbff;border:1px solid #e6f0ff;padding:.9rem;border-radius:8px}
+  .error{color:#b91c1c;background:#fff6f6;padding:.5rem;border:1px solid #fecaca;border-radius:6px;margin-top:.6rem;display:none}
+  .show-pass{cursor:pointer;font-size:.9rem;color:#475569}
+  @media (max-width:880px){.grid{grid-template-columns:1fr;}.brand{display:none}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- Left: brand & quick info -->
+      <div class="brand">
+        <img src="assets/images/logo.png" alt="Bits logo" />
+        <h1 style="margin:.6rem 0 0 0">Bits — Admin</h1>
+        <p class="lead">Manage forms and responses. For local demo only — protect this route before production.</p>
+
+        <div style="margin-top:1rem" class="card-sample">
+          <strong>Demo admins</strong>
+          <div class="muted" style="margin-top:.4rem">
+            admin1 / DemoPass1! — redirects to admin1-dashboard.html<br>
+            admin2 / DemoPass2! — redirects to admin2-dashboard.html
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: login card -->
+      <div class="login-card" role="main" aria-labelledby="loginTitle">
+        <h2 id="loginTitle">Sign in to Admin</h2>
+        <p class="muted">Enter your credentials to continue.</p>
+
+        <form id="adminLoginForm" autocomplete="off" style="margin-top:1rem">
+          <label class="muted">Username</label>
+          <input class="input" name="username" id="username" placeholder="admin1" required autocomplete="username">
+          <div style="margin-top:.75rem">
+            <label class="muted">Password</label>
+            <div style="display:flex;gap:.5rem;align-items:center">
+              <input class="input" name="password" id="password" type="password" placeholder="••••••••" required autocomplete="current-password">
+              <button type="button" id="togglePass" class="btn ghost" style="padding:.45rem .6rem">Show</button>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:.5rem;margin-top:1rem;align-items:center">
+            <button type="submit" class="btn">Sign in</button>
+            <button type="button" id="clearBtn" class="btn ghost">Clear</button>
+            <div style="margin-left:auto" class="muted">Demo only</div>
+          </div>
+
+          <div id="errorBox" class="error" role="alert"></div>
+          <p class="note">By signing in you accept that this is a demo area. For real admin, use server-side auth or Vercel password protection.</p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+/* DOM-ready script — improved login + redirect handling */
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Demo credentials (client-side). For production move to server.
+  const admins = {
+    'admin1': 'DemoPass1!',
+    'admin2': 'DemoPass2!'
+  };
+  const redirectMap = {
+    'admin1': 'admin1-dashboard.html',
+    'admin2': 'admin2-dashboard.html'
+  };
+
+  // Elements
+  const form = document.getElementById('adminLoginForm');
+  const usernameEl = document.getElementById('username');
+  const passwordEl = document.getElementById('password');
+  const errorBox = document.getElementById('errorBox');
+  const togglePass = document.getElementById('togglePass');
+  const clearBtn = document.getElementById('clearBtn');
+
+  // If already signed in, redirect immediately
+  const savedUser = sessionStorage.getItem('bits_admin_user');
+  if (savedUser && redirectMap[savedUser]) {
+    // small delay so user sees immediate redirect
+    window.location.href = redirectMap[savedUser];
+    return;
+  }
+
+  // Toggle show/hide password
+  togglePass.addEventListener('click', function () {
+    const t = passwordEl.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordEl.setAttribute('type', t);
+    togglePass.textContent = t === 'text' ? 'Hide' : 'Show';
+  });
+
+  clearBtn.addEventListener('click', function () {
+    usernameEl.value = '';
+    passwordEl.value = '';
+    usernameEl.focus();
+    errorBox.style.display = 'none';
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const user = usernameEl.value.trim();
+    const pass = passwordEl.value;
+
+    // Basic validation
+    if (!user || !pass) {
+      showError('Please enter username and password.');
+      return;
+    }
+
+    if (admins[user] && admins[user] === pass) {
+      // success: store session and redirect
+      sessionStorage.setItem('bits_admin', 'true');
+      sessionStorage.setItem('bits_admin_user', user);
+      // small animation delay
+      setTimeout(() => {
+        const dest = redirectMap[user] || 'admin-portal.html';
+        window.location.href = dest;
+      }, 250);
+    } else {
+      showError('Invalid username or password. Please try again.');
+    }
+  });
+
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.style.display = 'block';
+    setTimeout(() => { errorBox.style.display = 'none'; }, 6000);
+  }
+
+});
+</script>
+</body>
+</html>

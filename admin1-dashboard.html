@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin 1 Dashboard — Bits</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+// Protect page
+if (sessionStorage.getItem('bits_admin_user') !== 'admin1') {
+  window.location.href = 'admin-portal.html';
+}
+</script>
+
+<header class="header">
+<div class="container topbar">
+<div class="logo"><img src="assets/images/logo.png" alt="Bits logo"></div>
+<nav class="nav">
+<a href="/">Home</a>
+<button onclick="logout()" class="cta">Logout</button>
+</nav>
+</div>
+</header>
+
+<main class="container">
+<h1>Admin 1 Dashboard</h1>
+
+<div class="admin-grid">
+
+<div class="card">
+  <h3>Admin1 — Enrollment Form</h3>
+  <div class="actions">
+    <a class="cta" href="YOUR_FORM_VIEW_URL" target="_blank">View Responses</a>
+    <a class="cta" href="YOUR_FORM_EDIT_URL" target="_blank">Edit Form</a>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Admin1 — Workshop Form</h3>
+  <div class="actions">
+    <a class="cta" href="#" target="_blank">View</a>
+    <a class="cta" href="#" target="_blank">Edit</a>
+  </div>
+</div>
+
+</div>
+</main>
+
+<script>
+function logout() {
+  sessionStorage.clear();
+  window.location.href = 'admin-portal.html';
+}
+</script>
+
+</body>
+</html>
